@@ -4,16 +4,22 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <script src="{{asset('javascript/index.js')}} defer"></script>
+        <script src="https://kit.fontawesome.com/53741e38cc.js" crossorigin="anonymous"></script>
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="d-flex flex-column">
+        <header>Header</header>
+        <div class="flex-fill d-flex flex-row-nowrap justify-content-center">
+            <div class="content flex-fill d-flex flex-row-nowrap">
+                <div class="sidebar">
+                    Sidebar
+                </div>
+                <div class="app-content flex-fill">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        <footer>Footer</footer>
     </body>
 </html>

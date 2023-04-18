@@ -9,17 +9,15 @@
         <script src="https://kit.fontawesome.com/53741e38cc.js" crossorigin="anonymous"></script>
     </head>
     <body class="d-flex flex-column">
-        <header>Header</header>
+        {{ include('partials/_header.html.twig') }}
         <div class="flex-fill d-flex flex-row-nowrap justify-content-center">
             <div class="content flex-fill d-flex flex-row-nowrap">
-                <div class="sidebar">
-                    Sidebar
-                </div>
+                {{ include('partials/_sidebar.html.twig') }}
                 <div class="app-content flex-fill">
                     {% block body %}{% endblock %}
                 </div>
             </div>
         </div>
-        <footer>Footer</footer>
+        {{ include('partials/_footer.html.twig') }}
     </body>
 </html>

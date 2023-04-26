@@ -10,6 +10,9 @@ C'est un projet en Symfony
 * Symfony
 * Twig
 * Doctrine
+* Webpack encore
+* SASS
+* Typescript
 
 ## Persistance des donnees
 - MySQL

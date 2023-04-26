@@ -1,7 +1,15 @@
-# Projet Quori
+# Projet Quori[en cours...]
+
+[![version](https://img.shields.io/badge/version-1.0.0-yellow.svg)](https://semver.org)
 
 ## Description
-Quori est un clone du site officiel Quora
+Quori est une application semblable au site Quora.
+C'est un projet en Symfony
+
+## Technologies utilisees
+* Symfony
+* Twig
+* Doctrine
 
 ## Persistance des donnees
 - MySQL

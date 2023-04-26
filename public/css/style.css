@@ -179,7 +179,7 @@ header {
 .header-search {
     border-radius: var(--border-radius);
     background-color: var(--gray-light);
-    max-width: 400px;
+    max-width: 300px;
 }
 
 .header-search input {

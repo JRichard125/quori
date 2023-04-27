@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{question.title}}
+{% endblock title %}
+
+{% block body %}
+    <div class="block p-20 d-flex flex-column">
+        <h1 class="mb-20"> {{question.title}} </h1>
+        <p> {{question.content}} </p>
+    </div>
+{% endblock body %}

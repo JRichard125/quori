@@ -50,6 +50,11 @@ ul {
     list-style: none;
 }
 
+small {
+    font-size: var(--font-size-small);
+    font-family: var(--font-family);
+}
+
 /* Flex */
 .d-flex {
     display: flex;
@@ -133,6 +138,10 @@ ul {
     padding: 20px;
 }
 
+.pb-20 {
+    padding-bottom: 20px;
+}
+
 .py-50 {
     padding: 50px 0;
 }
@@ -178,6 +187,25 @@ ul {
     border-radius: var(--border-radius);
     background-color: white;
     box-shadow: var(--box-shadow);
+}
+
+.avatar-small {
+    width: 45px;
+    border-radius: 50%;
+}
+
+.clickable {
+    color: var(--primary);
+    font-weight: var(--font-weight-semi-bold);
+    cursor: pointer;
+}
+
+.rating-up {
+    color: var(--success);
+}
+
+.rating-down {
+    color: var(--warning);
 }
 
 /* General */
@@ -277,4 +305,10 @@ footer {
 .active {
     font-weight: bold;
     color: var(--primary);
+}
+
+/* Question */
+
+.question-content {
+    border-bottom: 1px solid var(--gray); 
 }

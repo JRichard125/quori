@@ -208,6 +208,22 @@ small {
     color: var(--warning);
 }
 
+/* Message flash  */
+
+.flash {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.flash-succes {
+    background-color: var(--success);
+}
+
+.flash-error {
+    background-color: var(--warning);
+}
+
 /* General */
 .content{
     max-width: 1200px;

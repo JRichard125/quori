@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Form\QuestionType;
+use DateTimeZone;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,12 +14,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     #[Route('/question/ask', name: 'ask_question')]
-    public function ask(Request $request): Response
+    public function ask(Request $request, EntityManagerInterface $em): Response
     {
-        $formQuestion = $this->createForm(QuestionType::class);
+        $question = new Question();
+
+        $formQuestion = $this->createForm(QuestionType::class, $question);
         $formQuestion->handleRequest($request);
 
         if($formQuestion->isSubmitted() && $formQuestion->isValid()) {
+            $question->setNbResponse(0);
+            $question->setRating(0);
+            $question->setCreatedAt(new \DateTimeImmutable(timezone: new DateTimeZone("Europe/Paris")));
+
+            $em->persist($question);
+            $em->flush();
+
+            $this->addFlash('succes', 'Votre question a ete ajoutée');
+
+            return $this->redirectToRoute('home');
         }
 
 

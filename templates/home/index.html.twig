@@ -5,17 +5,9 @@
 {% block body %}
     <ul>
         {% for question in questions %}
-            <a href="{{ path('show_question', {id:question.id})}}" class="block d-flex flex-row mb-20">
-                <div class="d-flex flex-column mr-20 align-items-center">
-                    <i class="fa-solid fa-arrow-up {{question.rating > 0 ? 'rating-up' : ''}}"></i>
-                    <p {% if question.rating > 0  %}
-                        class= "rating-up"
-                    {% elseif question.rating < 0 %}
-                        class= "rating-down"
-                    {% endif %}>{{ question.rating }}</p>
-                    <i class="fa-solid fa-arrow-down {{question.rating < 0 ? 'rating-down' : ''}}"></i>
-                </div>
-                <div class="flex-fill d-flex flex-column">
+            <div class="block d-flex flex-row mb-20">
+                {% include "partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
+                <a href="{{ path('show_question', {id:question.id})}}" class="flex-fill d-flex flex-column">
                     <div class="mb-20 question-content pb-20">
                         <h3 class="mb-20"> {{ question.title }} </h3>
                         <p> {{ question.content }} </p>
@@ -30,8 +22,8 @@
                             <p> {{question.nbResponse}} </p>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         {% endfor %}
     </ul>
 {% endblock %}

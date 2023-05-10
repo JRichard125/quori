@@ -7,9 +7,18 @@
             <i class="fa-solid fa-search"></i>
             <input type="text" name="" id="">
         </div>
-        <div>
-            <a href="{{path('signup')}}" class="btn btn-primary mr-5">Inscription</a>
-            <a href="{{path('signin')}}" class="btn btn-primary-reverse">Connexion</a>
-        </div>
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <div class="d-flex flex-row-nowrap align-items-center">
+                <img src="{{app.user.image}}" alt="Profile User" class="avatar mr-10">
+                <small>
+                    <a href="{{path('logout')}}">Déconnexion</a>
+                </small>
+            </div>
+        {% else %}
+            <div>
+                <a href="{{path('signup')}}" class="btn btn-primary mr-5">Inscription</a>
+                <a href="{{path('signin')}}" class="btn btn-primary-reverse">Connexion</a>
+            </div>
+        {% endif %}
     </div>
 </header>

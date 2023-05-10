@@ -96,6 +96,10 @@ small {
     flex: 1;
 }
 
+.w-100 {
+    width: 100%;
+}
+
 /* Margins */
 .m-5 {
     margin: 5px;

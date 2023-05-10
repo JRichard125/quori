@@ -33,11 +33,11 @@
         {% for comment in question.comments %}
             <div class="question-response-elem d-flex flex-row-nowrap mb-20">
                 {% include "./partials/_rating.html.twig" with {rating: comment.rating, from: 'comment', id: comment.id} %}
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column w-100">
                     <div class="d-flex flex-row-nowrap align-items-center pb-10">
                         <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Avatar" class="avatar-small mr-10">
-                        <p class="clickable">Shane Harper</p>
-                        <span class="ml-auto"> {{comment.createdAt | format_datetime(pattern= 'd MMMM Y', locale= 'fr')}} </span>
+                        <p class="clickable flex-fill">Shane Harper</p>
+                        <span class="ml-auto"> {{comment.createdAt | ago(locale= 'fr')}} </span>
                     </div>
                     <p class="question-response-text"> {{comment.content}} </p>
                 </div>

@@ -5,5 +5,30 @@
 {% endblock title %}
 
 {% block body %}
-    <h1>Connexion</h1>
+    <div class="block">
+        <h2 class="pb-30">Connexion</h2>
+        <form action="{{path('signin')}}" method="post">
+            <div class="form-row">
+                <label for="email">Email</label>
+                <input type="email" name="_username" id="email" value="{{ username }}">
+            </div>
+            <div class="form-row">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="_password" id="password">
+            </div>
+            <div class="form-row">
+                <label for="remember_me">
+                    <input type="checkbox" name="_remember_me" id="remember_me">
+                    Se souvenir de moi
+                </label>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}">
+            {% if error %}
+                <ul class="form-errors pb-20">
+                    <li> {{error.messageKey | trans(error.messageData, 'security')}} </li>
+                </ul>
+            {% endif %}
+            <button class="btn btn-primary">Se connecter</button>
+        </form>
+    </div>
 {% endblock body %}

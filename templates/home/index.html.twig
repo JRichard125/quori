@@ -7,22 +7,22 @@
         {% for question in questions %}
             <div class="block d-flex flex-row mb-20">
                 {% include "partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
-                <a href="{{ path('show_question', {id:question.id})}}" class="flex-fill d-flex flex-column">
-                    <div class="mb-20 question-content pb-20">
+                <div class="flex-fill d-flex flex-column">
+                    <a href="{{ path('show_question', {id:question.id})}}" class="mb-20 question-content pb-20">
                         <h3 class="mb-20"> {{ question.title }} </h3>
                         <p> {{ question.content }} </p>
-                    </div>
+                    </a>
                     <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
+                        <a href="{{path('profile_user', {id: question.author.id})}}" class="d-flex flex-row align-items-center">
                             <img src="{{question.author.image}}" alt="" class="avatar-small mr-20">
                             <small>Demandé par <span class="clickable">{{question.author.fullname}}</span></small>
-                        </div>
+                        </a>
                         <div class="d-flex flex-row align-items-center">
                             <i class="fa-solid fa-coment mr-20"></i>
                             <p> {{question.nbResponse}} </p>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         {% endfor %}
     </ul>

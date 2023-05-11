@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Mes Reponses
+{% endblock title %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/question_show.css')}}">
+{% endblock stylesheets %}
+
+{% block body %}
+    <div class="block mb-20">
+        <h3 class="pb-30">Mes réponses</h3>
+        <ul>
+            {% for comment in app.user.comments %}
+                <a href="{{ path('show_question', {id: comment.question.id})}}">
+                    <div class="d-flex flex-row-nowrap align-items-center pb-20">
+                        <p>{{comment.question.title}}</p>
+                        <div class="question-tag">QUESTION</div>
+                    </div>
+                    <li class="pb-30">{{ comment.content | slice(0, 100) }} {% if comment.content | length >= 101 %}
+                        ...
+                    {% endif %} </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock body %}

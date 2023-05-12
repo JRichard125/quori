@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'current_user_profile')]
-    #[IsGranted("IS_AUTHENTICATED_FULLY")]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function currentUserProfile(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response
     {
         /**
@@ -46,21 +46,21 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/questions', name: 'show_questions')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function showQuestions()
     {
         return $this->render('user/show_questions.html.twig');
     }
 
     #[Route('/user/comments', name: 'show_comments')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function showComments()
     {
         return $this->render('user/show_comments.html.twig');
     }
 
     #[Route('/user/{id}', name: 'profile_user')]
-    #[IsGranted("IS_AUTHENTICATED_FULLY")]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function userProfile(User $user): Response
     {
         $currentUser = $this->getUser();

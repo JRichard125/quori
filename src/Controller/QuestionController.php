@@ -7,6 +7,7 @@ use App\Entity\Question;
 use App\Entity\Vote;
 use App\Form\CommentType;
 use App\Form\QuestionType;
+use App\Repository\QuestionRepository;
 use App\Repository\VoteRepository;
 use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
@@ -47,42 +48,44 @@ class QuestionController extends AbstractController
     }
 
     #[Route('/question/{id}', name: 'show_question')]
-    public function show(Request $request, Question $question, EntityManagerInterface $em)
+    public function show(int $id ,Request $request, QuestionRepository $questionRepository, EntityManagerInterface $em)
     {
 
         $user = $this->getUser();
+        $question = $questionRepository->findQuestionWithAllCommentsAndAuthors($id);
 
-        $options = [
-            'question' => $question
-        ];
+       if($question) {
 
-        if($user) {
+            $options = [
+                'question' => $question
+            ];
 
-            $comment = new Comment();
-            $commentForm = $this->createForm(CommentType::class, $comment);
-            $commentForm->handleRequest($request);
+            if($user) {
 
-            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-                $comment->setCreatedAt(new \DateTimeImmutable(timezone: new DateTimeZone("Europe/Paris")));
-                $comment->setRating(0);
-                $comment->setQuestion($question);
-                $comment->setAuthor($user);
+                $comment = new Comment();
+                $commentForm = $this->createForm(CommentType::class, $comment);
+                $commentForm->handleRequest($request);
 
-                $question->setNbResponse($question->getNbResponse() +1);
+                if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                    $comment->setCreatedAt(new \DateTimeImmutable(timezone: new DateTimeZone("Europe/Paris")));
+                    $comment->setRating(0);
+                    $comment->setQuestion($question);
+                    $comment->setAuthor($user);
 
-                $em->persist($comment);
-                $em->flush();
+                    $question->setNbResponse($question->getNbResponse() +1);
 
-                $this->addFlash('success', 'Votre réponse a bien ete publiée');
+                    $em->persist($comment);
+                    $em->flush();
 
-                return $this->redirect($request->getUri());
+                    $this->addFlash('success', 'Votre réponse a bien ete publiée');
+
+                    return $this->redirect($request->getUri());
+                }
+                $options['form'] = $commentForm->createView();
             }
-            $options['form'] = $commentForm->createView();
-        }
-
-        
-
-        return $this->render('question/show.html.twig', $options);
+            return $this->render('question/show.html.twig', $options);
+       }
+        return $this->redirectToRoute('home');
     }
 
     #[Route('/question/rating/{id}/{score}', name: 'question_rating')]

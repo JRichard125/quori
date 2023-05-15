@@ -13,7 +13,12 @@
                 <input type="email" name="_username" id="email" value="{{ username }}">
             </div>
             <div class="form-row">
-                <label for="password">Mot de passe</label>
+                <div class="d-flex flex-row-nowrap justify-content-between">
+                    <label for="password">Mot de passe</label>
+                    <small>
+                        <a href="{{path('reset-password-request')}}">Mot de passe oublié ?</a>
+                    </small>
+                </div>
                 <input type="password" name="_password" id="password">
             </div>
             <div class="form-row">
@@ -32,6 +37,7 @@
             <small>
                 <a href="{{path('signup')}}">Pas encore de compte ?</a>
             </small>
+            
         </form>
     </div>
 {% endblock body %}

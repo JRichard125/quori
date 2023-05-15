@@ -7,10 +7,10 @@
     <title>Bienvenue sur Quori</title>
 </head>
 <body>
-    {% apply inline_css(source('@email_css/welcome.css')) %}
+    {% apply inline_css(source('@email_css/email.css')) %}
         <h1>Bienvenue {{ fullname }} </h1>
         <p>Vous pouvez des a present poser vos question sur Quori</p>
-        <a href="{{path('signin')}}">Se connecter</a>
+        <a href="{{url('signin')}}">Se connecter</a>
     {% endapply %}
 </body>
 </html>

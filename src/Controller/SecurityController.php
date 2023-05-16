@@ -25,6 +25,7 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class SecurityController extends AbstractController
 {
@@ -45,6 +46,17 @@ class SecurityController extends AbstractController
         if($signupForm->isSubmitted() && $signupForm->isValid()) {
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
+
+            $picture = $signupForm->get('pictureFile')->getData();
+            if($picture) {
+                $folder = $this->getParameter('profile.folder');
+                $ext = $picture->guessExtention() ?? 'bin';
+                $filename = bin2hex(random_bytes(10)) . "." . $ext;
+                $picture->move($folder, $filename);
+                $user->setImage($this->getParameter('profile.folder.public_path') . "/" . $filename); // /profile/dnhsgfsdj.png
+            } else {
+                $user->setImage("/images/default_profile.png");
+            }
 
             $em->persist($user);
             $em->flush();

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 class UploadImageService {

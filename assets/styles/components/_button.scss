@@ -5,25 +5,25 @@
     border: 0;
     box-shadow: var(--box-shadow);
     transition: opacity .4s;
-}
 
-.btn:hover {
-    cursor: pointer;
-    opacity: .8;
-}
+    &:hover {
+        cursor: pointer;
+        opacity: .8;
+    }
 
-.btn-small {
-    padding: 5px 15px;
-}
+    &-small {
+        padding: 5px 15px;
+    }
 
-.btn-primary {
-    background-color: var(--primary);
-    color: white;
-    font-weight: 600;
-}
+    &-primary {
+        background-color: var(--primary);
+        color: white;
+        font-weight: 600;
+    }
 
-.btn-primary-reverse {
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    background-color: white;
+    &-primary-reverse {
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        background-color: white;
+    }
 }

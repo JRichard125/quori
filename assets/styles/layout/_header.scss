@@ -6,19 +6,21 @@ header {
 
 .header-logo {
     max-width: 150px;
+
+    img {
+        max-width: 150px;
+    }
 }
-.header-logo img {
-    max-width: 150px;
-}
+
 
 .header-search {
     border-radius: var(--border-radius);
     background-color: var(--gray-light);
     max-width: 300px;
-}
 
-.header-search input {
-    border: none;
-    outline: none;
-    background-color: var(--gray-light);
+    input {
+        border: none;
+        outline: none;
+        background-color: var(--gray-light);
+    }
 }

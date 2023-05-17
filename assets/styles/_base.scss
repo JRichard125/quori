@@ -1,0 +1,50 @@
+/* General */
+.content{
+    max-width: 1200px;
+}
+
+.app-content {
+    background-color: var(--gray-light);
+}
+
+.block {
+    padding: 25px;
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 50%;
+
+    &-small {
+        width: 45px;
+        border-radius: 50%;
+    }
+}
+
+.clickable {
+    color: var(--primary);
+    font-weight: var(--font-weight-semi-bold);
+    cursor: pointer;
+}
+
+.rating-up {
+    color: var(--success);
+}
+
+.rating-down {
+    color: var(--warning);
+}
+
+.separator {
+    border-bottom: 1px solid var(--gray-light);
+    margin: 30px 0px;
+}
+
+/* Rating */
+
+.fa-thumbs-up, .fa-thumbs-down {
+    margin: 7px 0;
+}

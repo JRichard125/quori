@@ -13,13 +13,13 @@
     <div class="block">
         <div class="d-flex flex-row-nowrap align-items-center">
             {% include "./partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
-            <div class="d-flex flex-row-nowrap flex-fill">
+            <div class="question-author d-flex flex-row-nowrap align-items-center justify-content-between flex-fill flex-column-xs">
                 <h3> {{question.title}} </h3>
                 <div class="question-tag">QUESTION</div>
+                <a href="{{path('profile_user', {id: question.author.id}) }}">
+                    <img src="{{question.author.image}}" alt="Avatar" class="avatar ml-auto">
+                </a>
             </div>
-            <a href="{{path('profile_user', {id: question.author.id}) }}">
-                <img src="{{question.author.image}}" alt="Avatar" class="avatar ml-auto">
-            </a>
         </div>
         <p class="question-text"> {{question.content}} </p>
         

@@ -1,10 +1,23 @@
 /* General */
 .content{
     max-width: 1200px;
+
+    &-main {
+        padding: 50px 0;
+        width: 1100px;
+        @include xs {
+            padding: 0 0 50px 0;
+        }
+    }
 }
 
 .app-content {
     background-color: var(--gray-light);
+    padding: 20px;
+
+    @include xs {
+        padding: 10px;
+    }
 }
 
 .block {

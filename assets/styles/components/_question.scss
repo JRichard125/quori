@@ -1,3 +1,15 @@
 .question-content {
     border-bottom: 1px solid var(--gray); 
 }
+
+.question-author {
+    @include xs {
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .question-tag {
+            margin-bottom: 1rem;
+        }
+    }
+}

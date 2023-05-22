@@ -2,6 +2,12 @@
 .sidebar {
     min-width: 200px;
 
+    @include xs {
+        width: 100%;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
     a {
         display: block;
         padding: 10px;
@@ -15,6 +21,10 @@
 
         i {
             color: var(--color-dark);
+        }
+
+        .fa-question{
+            color: white;
         }
     }
 }

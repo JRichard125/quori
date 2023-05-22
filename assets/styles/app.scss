@@ -1,13 +1,14 @@
-@use './variables';
-@use './utils';
-@use './reset';
-@use './base';
+@import './variables';
+@import './mixins';
+@import './utils';
+@import './reset';
+@import './base';
 
-@use './layout/header';
-@use './layout/sidebar';
-@use './layout/footer';
+@import './layout/header';
+@import './layout/sidebar';
+@import './layout/footer';
 
-@use './components/button';
-@use './components/flash';
-@use './components/form';
-@use './components/question';
+@import './components/button';
+@import './components/flash';
+@import './components/form';
+@import './components/question';

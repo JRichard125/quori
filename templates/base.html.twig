@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Quory | Questions/Reponses{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_script_tags('app') }}
             <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-            <script src="{{asset('javascript/index.js')}} defer"></script>
             <script src="https://kit.fontawesome.com/53741e38cc.js" crossorigin="anonymous"></script>
         {% endblock stylesheets %}
     </head>
@@ -20,7 +21,7 @@
             {% endfor %}
         {% endfor %}
         <div class="app-content flex-fill d-flex flex-row-nowrap justify-content-center">
-            <div class="content flex-fill d-flex flex-row-nowrap py-50">
+            <div class="content-main d-flex flex-row-nowrap flex-column-xs py-50">
                 {{ include('partials/_sidebar.html.twig') }}
                 <div class="flex-fill">
                     {% block body %}{% endblock %}

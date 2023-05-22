@@ -8,7 +8,7 @@
             <input type="text" name="" id="">
         </div>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <div class="d-flex flex-row-nowrap align-items-center">
+            <div class="d-flex flex-row-nowrap align-items-center xs-hide">
                 <a href="{{path('current_user_profile')}}">
                     <img src="{{asset(app.user.image)}}" alt="Profile User" class="avatar mr-10">
                 </a>
@@ -17,10 +17,26 @@
                 </small>
             </div>
         {% else %}
-            <div>
+            <div class="xs-hide">
                 <a href="{{path('signup')}}" class="btn btn-primary mr-5">Inscription</a>
                 <a href="{{path('signin')}}" class="btn btn-primary-reverse">Connexion</a>
             </div>
         {% endif %}
+        <div class="show-xs burger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        
     </div>
 </header>
+
+{# menu mobile #}
+<div class="menu-xs d-flex flex-column hidden py-20">
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <a href="{{path('current_user_profile')}}">Profil</a>
+    <a href="{{path('logout')}}">Déconnexion</a>
+    {% else %}
+        <a href="{{path('signup')}}" class="btn btn-primary mr-5">Inscription</a>
+        <a href="{{path('signin')}}" class="btn btn-primary-reverse">Connexion</a>
+    {% endif %}
+</div>

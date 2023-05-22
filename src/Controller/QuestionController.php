@@ -47,6 +47,16 @@ class QuestionController extends AbstractController
         return $this->render('question/index.html.twig', ['form' => $formQuestion->createView()]);
     }
 
+    #[Route('/question/search/{search}', name: 'question_search')]
+    public function questionSearch(string $search = "none", QuestionRepository $questionRepository) {
+        if($search === "none") {
+            $questions = [];
+        } else {
+            $questions = $questionRepository->findByTerm($search);
+        }
+        return $this->json(json_encode($questions));
+    }
+
     #[Route('/question/{id}', name: 'show_question')]
     public function show(int $id ,Request $request, QuestionRepository $questionRepository, EntityManagerInterface $em)
     {

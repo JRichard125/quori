@@ -22,7 +22,7 @@ C'est un projet en Symfony
 - [X] Repondre a une question
 - [X] Voter la pertinance d'une question
 - [X] Voter la pertinance des reponses
-- [ ] Recherche de question
+- [X] Recherche de question
 - [X] Creation d'un compte utilisateur
 - [X] Modification du profil et de l'avatar de l'utilisateur
 - [X] Reset Password avec un systeme de token
